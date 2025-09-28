@@ -23,15 +23,20 @@ public class StartManager {
         });
 
         controller.get_btn_start().addEventHandler(MouseEvent.MOUSE_CLICKED, (e) -> {
-            on_btn_start_click();
+            try {
+                on_btn_start_click(stage);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         });
 
         stage.setScene(scene);
         stage.show();
     }
 
-    private void on_btn_start_click() {
-        //TODO
+    private void on_btn_start_click(Stage stage) throws IOException {
+        UsernamesManager usernamesManager = new UsernamesManager();
+        usernamesManager.Show(stage);
     }
 
 }
