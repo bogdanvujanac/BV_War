@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GameManager {
-    private int grid_size;
+    private final int grid_size;
     public GameController controller;
 
     GameManager(int grid_size){
