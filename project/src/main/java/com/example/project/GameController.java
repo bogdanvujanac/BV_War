@@ -11,26 +11,22 @@ public class GameController {
 
     public Button[][] matrix_buttons;
 
-    @FXML
-    private void initialize() {
-
-
-        create_board();
+    public void init(int grid_size){
+        create_board(grid_size);
     }
 
-    private void create_board(){
-        GridPane grid =  new GridPane(8, 8);
-        matrix_buttons =  new Button[8][8];
+    private void create_board(int n){
+        GridPane grid =  new GridPane(n, n);
+        matrix_buttons =  new Button[n][n];
 
-        for( int i = 0; i < 8; i++ ) {
-            for(int j=0; j<8; j++ ) {
+        for( int i = 0; i < n; i++ ) {
+            for(int j=0; j<n; j++ ) {
                 matrix_buttons[i][j] = new Button();
                 grid.add(matrix_buttons[i][j], i, j);
             }
         }
 
         grid_pane_game.add(grid,1,1);
-
     }
 
     private void create_button_actions(){
