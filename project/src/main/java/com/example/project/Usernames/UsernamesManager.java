@@ -1,5 +1,6 @@
-package com.example.project;
+package com.example.project.Usernames;
 
+import com.example.project.Game.GameManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -11,7 +12,7 @@ public class UsernamesManager {
     public UsernamesController controller;
 
     public void Show(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("enter_usernames_scene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/project/enter_usernames_scene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 
         controller = fxmlLoader.getController();

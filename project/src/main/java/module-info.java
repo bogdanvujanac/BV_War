@@ -7,4 +7,10 @@ module com.example.project {
 
     opens com.example.project to javafx.fxml;
     exports com.example.project;
+    exports com.example.project.Game;
+    opens com.example.project.Game to javafx.fxml;
+    exports com.example.project.Start;
+    opens com.example.project.Start to javafx.fxml;
+    exports com.example.project.Usernames;
+    opens com.example.project.Usernames to javafx.fxml;
 }

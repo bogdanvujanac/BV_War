@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.UsernamesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.Usernames.UsernamesController">
    <children>
       <Label fx:id="lbl_username1" layoutX="60.0" layoutY="33.0" prefHeight="23.0" prefWidth="154.0" text="Enter username of player1" />
       <Label fx:id="lbl_username2" layoutX="293.0" layoutY="33.0" prefHeight="23.0" prefWidth="154.0" text="Enter username of player2" />

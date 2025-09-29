@@ -1,5 +1,6 @@
-package com.example.project;
+package com.example.project.Start;
 
+import com.example.project.Usernames.UsernamesManager;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,7 +14,7 @@ public class StartManager {
     public StartController controller;
 
     public void Show(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("start_scene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/project/start_scene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 
         controller = fxmlLoader.getController();

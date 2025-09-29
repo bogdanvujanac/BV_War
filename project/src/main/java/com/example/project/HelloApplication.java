@@ -1,5 +1,6 @@
 package com.example.project;
 
+import com.example.project.Start.StartManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.Game;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,12 +10,12 @@ public class GameManager {
     private final int grid_size;
     public GameController controller;
 
-    GameManager(int grid_size){
+    public GameManager(int grid_size){
         this.grid_size = grid_size;
     }
 
     public void Show(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game_view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/project/game_scene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 
         // controller initialization

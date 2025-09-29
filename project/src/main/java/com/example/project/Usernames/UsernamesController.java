@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.Usernames;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
