@@ -1,5 +1,6 @@
 package com.example.project.Army;
 
+import com.example.project.Constants;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -7,19 +8,20 @@ import java.util.List;
 
 public class Infantry extends TheArmy{
 
-    public Infantry(int max_health, int health, int strength_of_attack, Pair<Integer, Integer> field) {
-        super(max_health, health, strength_of_attack, field);
+    public Infantry(Pair<Integer, Integer> field) {
+        super(Constants.infantry_max_health, Constants.infantry_max_health, Constants.infantry_strength_of_attack, field);
     }
 
     @Override
     protected List<Pair<Integer, Integer>> available_moves(int size_of_board) {
-        // infantry can move only one field
+        // infantry can move two fields
         int x = this.field.getValue();
         int y = this.field.getKey();
 
         ArrayList<Pair<Integer, Integer>> moves =  new ArrayList<>();
 
         //TODO: refactor
+        //TODO: add second round because infantry can move two fields
         if(x-1 >= 0 && y-1 >= 0)
             moves.add(new Pair<>(x-1, y-1));
         if(x-1 >= 0)
