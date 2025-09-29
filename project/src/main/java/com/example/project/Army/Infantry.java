@@ -14,15 +14,23 @@ public class Infantry extends TheArmy{
 
     @Override
     protected List<Pair<Integer, Integer>> available_moves(int size_of_board) {
-        // infantry can move two fields
+        // infantry can move two fields in 8 directions
         int x = this.field.getValue();
         int y = this.field.getKey();
 
         ArrayList<Pair<Integer, Integer>> moves =  new ArrayList<>();
 
+        for(Pair<Integer, Integer> dir : Constants.four_directions){
+            moves.addAll(get_fields_in_direction(x, y, dir.getValue(), dir.getKey(), Constants.infantry_range_moves, size_of_board, false));
+        }
+        for(Pair<Integer, Integer> dir : Constants.diagonal_directions){
+            moves.addAll(get_fields_in_direction(x, y, dir.getValue(), dir.getKey(), Constants.infantry_range_moves, size_of_board, false));
+        }
+
+
         //TODO: refactor
         //TODO: add second round because infantry can move two fields
-        if(x-1 >= 0 && y-1 >= 0)
+        /*if(x-1 >= 0 && y-1 >= 0)
             moves.add(new Pair<>(x-1, y-1));
         if(x-1 >= 0)
             moves.add(new Pair<>(x-1, y));
@@ -37,7 +45,7 @@ public class Infantry extends TheArmy{
         if(y-1 >= 0)
             moves.add(new Pair<>(x, y-1));
         if(y+1 < size_of_board)
-            moves.add(new Pair<>(x, y+1));
+            moves.add(new Pair<>(x, y+1));*/
 
         return moves;
     }

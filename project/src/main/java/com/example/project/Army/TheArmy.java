@@ -2,6 +2,7 @@ package com.example.project.Army;
 
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class TheArmy {
@@ -23,5 +24,24 @@ public abstract class TheArmy {
 
     public void set_field(Pair<Integer, Integer> field) {
         this.field = field;
+    }
+
+    protected List<Pair<Integer, Integer>> get_fields_in_direction(int x, int y, int step_x, int step_y, int range_moves, int size_of_board, boolean can_jump) {
+        List<Pair<Integer, Integer>> moves = new ArrayList<>();
+
+        for(int i=1; i<range_moves; i++){
+            int new_x = x + step_x*i;
+            int new_y = y + step_y*i;
+
+            if(new_x < 0 || new_x >= size_of_board || new_y < 0 || new_y >= size_of_board)
+                break;
+
+            // TODO: if(zauzeto polje)
+            //          if(!can_jump) break;
+            // else
+            moves.add(new Pair<>(new_x, new_y));
+        }
+
+        return moves;
     }
 }
