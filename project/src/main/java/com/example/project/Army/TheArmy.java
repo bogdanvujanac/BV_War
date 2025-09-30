@@ -26,6 +26,12 @@ public abstract class TheArmy {
         this.field = field;
     }
 
+
+    /// x, y -> current field
+    /// step_x, step_y -> direction
+    /// range_moves -> range of steps in the direction
+    /// size_of_board ->
+    /// can_jump -> can army jump above friendly army
     protected List<Pair<Integer, Integer>> get_fields_in_direction(int x, int y, int step_x, int step_y, int range_moves, int size_of_board, boolean can_jump) {
         List<Pair<Integer, Integer>> moves = new ArrayList<>();
 

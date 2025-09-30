@@ -15,16 +15,16 @@ public class Infantry extends TheArmy{
     @Override
     protected List<Pair<Integer, Integer>> available_moves(int size_of_board) {
         // infantry can move two fields in 8 directions
-        int x = this.field.getValue();
-        int y = this.field.getKey();
+        int x = this.field.getKey();
+        int y = this.field.getValue();
 
         ArrayList<Pair<Integer, Integer>> moves =  new ArrayList<>();
 
         for(Pair<Integer, Integer> dir : Constants.four_directions){
-            moves.addAll(get_fields_in_direction(x, y, dir.getValue(), dir.getKey(), Constants.infantry_range_moves, size_of_board, false));
+            moves.addAll(get_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.infantry_range_moves, size_of_board, false));
         }
         for(Pair<Integer, Integer> dir : Constants.diagonal_directions){
-            moves.addAll(get_fields_in_direction(x, y, dir.getValue(), dir.getKey(), Constants.infantry_range_moves, size_of_board, false));
+            moves.addAll(get_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.infantry_range_moves, size_of_board, false));
         }
 
 
