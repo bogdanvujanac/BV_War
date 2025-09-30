@@ -21,10 +21,10 @@ public class Infantry extends TheArmy{
         ArrayList<Pair<Integer, Integer>> moves =  new ArrayList<>();
 
         for(Pair<Integer, Integer> dir : Constants.four_directions){
-            moves.addAll(get_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.infantry_range_moves, size_of_board, false));
+            moves.addAll(get_move_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.infantry_range_moves, size_of_board, Constants.infantry_can_jump));
         }
         for(Pair<Integer, Integer> dir : Constants.diagonal_directions){
-            moves.addAll(get_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.infantry_range_moves, size_of_board, false));
+            moves.addAll(get_move_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.infantry_range_moves, size_of_board, Constants.infantry_can_jump));
         }
 
 
@@ -52,29 +52,18 @@ public class Infantry extends TheArmy{
 
     @Override
     protected List<Pair<Integer, Integer>> available_attacks(int size_of_board) {
-        // infantry can attack in range of only one field
+        // infantry can attack in range of only one field in  8 directions
         int x = this.field.getValue();
         int y = this.field.getKey();
 
         ArrayList<Pair<Integer, Integer>> attack_fields =  new ArrayList<>();
 
-        //TODO: refactor
-        if(x-1 >= 0 && y-1 >= 0)
-            attack_fields.add(new Pair<>(x-1, y-1));
-        if(x-1 >= 0)
-            attack_fields.add(new Pair<>(x-1, y));
-        if(x-1 >=0 && y+1 < size_of_board)
-            attack_fields.add(new Pair<>(x-1, y+1));
-        if(x+1 < size_of_board && y-1 >= 0)
-            attack_fields.add(new Pair<>(x+1, y-1));
-        if(x+1 < size_of_board)
-            attack_fields.add(new Pair<>(x+1, y));
-        if(x+1 < size_of_board && y+1 < size_of_board)
-            attack_fields.add(new Pair<>(x+1, y+1));
-        if(y-1 >= 0)
-            attack_fields.add(new Pair<>(x, y-1));
-        if(y+1 < size_of_board)
-            attack_fields.add(new Pair<>(x, y+1));
+        for(Pair<Integer, Integer> dir : Constants.four_directions){
+            attack_fields.addAll(get_attack_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.infantry_attack_range, size_of_board, Constants.infantry_can_overjump));
+        }
+        for(Pair<Integer, Integer> dir : Constants.diagonal_directions){
+            attack_fields.addAll(get_attack_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.infantry_attack_range, size_of_board, Constants.infantry_can_overjump));
+        }
 
         return attack_fields;
     }

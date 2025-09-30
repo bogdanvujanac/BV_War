@@ -20,7 +20,7 @@ public class Cannon extends TheArmy{
         ArrayList<Pair<Integer, Integer>> moves =  new ArrayList<>();
 
         for(Pair<Integer, Integer> dir : Constants.four_directions){
-            moves.addAll(get_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.cannon_range_moves, size_of_board, false));
+            moves.addAll(get_move_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.cannon_range_moves, size_of_board, Constants.cannon_can_jump));
         }
 
         return moves;
@@ -28,6 +28,16 @@ public class Cannon extends TheArmy{
 
     @Override
     protected List<Pair<Integer, Integer>> available_attacks(int size_of_board) {
-        return List.of();
+        // cannon can attack in range of 3 fields in 4 directions with possible overjump others
+        int x = this.field.getValue();
+        int y = this.field.getKey();
+
+        ArrayList<Pair<Integer, Integer>> attack_fields =  new ArrayList<>();
+
+        for(Pair<Integer, Integer> dir : Constants.four_directions){
+            attack_fields.addAll(get_attack_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.cannon_attack_range, size_of_board, Constants.cannon_can_overjump));
+        }
+
+        return attack_fields;
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class TheArmy {
 
-    protected int max_health;
+    protected int max_health; // TODO: think about removing this
     protected int health;
     protected int strength_of_attack;
     protected Pair<Integer, Integer> field; // TODO: create class for the field
@@ -32,7 +32,7 @@ public abstract class TheArmy {
     /// range_moves -> range of steps in the direction
     /// size_of_board ->
     /// can_jump -> can army jump above friendly army
-    protected List<Pair<Integer, Integer>> get_fields_in_direction(int x, int y, int step_x, int step_y, int range_moves, int size_of_board, boolean can_jump) {
+    protected List<Pair<Integer, Integer>> get_move_fields_in_direction(int x, int y, int step_x, int step_y, int range_moves, int size_of_board, boolean can_jump) {
         List<Pair<Integer, Integer>> moves = new ArrayList<>();
 
         for(int i=1; i<range_moves; i++){
@@ -49,5 +49,22 @@ public abstract class TheArmy {
         }
 
         return moves;
+    }
+
+    protected List<Pair<Integer, Integer>> get_attack_fields_in_direction(int x, int y, int step_x, int step_y, int attack_range, int size_of_board, boolean overjump) {
+        List<Pair<Integer, Integer>> attacks = new ArrayList<>();
+
+        for(int i=1; i<attack_range; i++){
+            int new_x = x + step_x*i;
+            int new_y = y + step_y*i;
+
+            if(new_x < 0 || new_x >= size_of_board || new_y < 0 || new_y >= size_of_board)
+                break;
+
+            // TODO: check if field is occupied
+            attacks.add(new Pair<>(new_x, new_y));
+        }
+
+        return attacks;
     }
 }

@@ -20,11 +20,11 @@ public class Cavalry extends TheArmy {
         List<Pair<Integer, Integer>> moves = new ArrayList<>();
 
         for(Pair<Integer, Integer> dir : Constants.four_directions){
-            moves.addAll(get_fields_in_direction(x, y, dir.getKey(), dir.getValue(),Constants.cavalry_range_moves,  size_of_board, true));
+            moves.addAll(get_move_fields_in_direction(x, y, dir.getKey(), dir.getValue(),Constants.cavalry_range_moves,  size_of_board, Constants.cavalry_can_jump));
         }
 
         for(Pair<Integer, Integer> dir : Constants.diagonal_directions){
-            moves.addAll(get_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.cavalry_range_moves, size_of_board, true));
+            moves.addAll(get_move_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.cavalry_range_moves, size_of_board, Constants.cavalry_can_jump));
         }
 
         return moves;
@@ -32,6 +32,19 @@ public class Cavalry extends TheArmy {
 
     @Override
     protected List<Pair<Integer, Integer>> available_attacks(int size_of_board) {
-        return List.of();
+        // cavalry can attack in range of only one field in 8 directions
+        int x = this.field.getValue();
+        int y = this.field.getKey();
+
+        ArrayList<Pair<Integer, Integer>> attack_fields =  new ArrayList<>();
+
+        for(Pair<Integer, Integer> dir : Constants.four_directions){
+            attack_fields.addAll(get_attack_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.cavalry_attack_range, size_of_board, Constants.cavalry_can_overjump));
+        }
+        for(Pair<Integer, Integer> dir : Constants.diagonal_directions){
+            attack_fields.addAll(get_attack_fields_in_direction(x, y, dir.getKey(), dir.getValue(), Constants.cavalry_attack_range, size_of_board, Constants.cavalry_can_overjump));
+        }
+
+        return attack_fields;
     }
 }
