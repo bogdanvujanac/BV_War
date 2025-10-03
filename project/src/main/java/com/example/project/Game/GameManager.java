@@ -1,5 +1,6 @@
 package com.example.project.Game;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -22,8 +23,13 @@ public class GameManager {
         controller = fxmlLoader.getController();
         controller.init(grid_size);
 
+        stage.setMaximized(true);
+        stage.setResizable(false);
+
         stage.setTitle("Hello!");
         stage.setScene(scene);
+        stage.setFullScreenExitHint("");
         stage.show();
+        Platform.runLater(() -> stage.setFullScreen(true));
     }
 }

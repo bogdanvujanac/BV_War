@@ -3,6 +3,7 @@ module com.example.project {
     requires javafx.fxml;
     requires javafx.graphics;
     requires java.desktop;
+    requires javafx.base;
 
 
     opens com.example.project to javafx.fxml;

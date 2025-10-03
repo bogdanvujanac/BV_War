@@ -4,8 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
+import javafx.scene.image.Image;
 
 public class UsernamesController {
+
+    @FXML
+    public AnchorPane anchor_pane;
 
     @FXML
     private Button btn_play;
@@ -23,6 +28,10 @@ public class UsernamesController {
     public void initialize(){
         cb_field.getItems().addAll("6x6","7x7","8x8", "9x9","10x10");
         cb_field.setValue("6x6");
+
+        Image img = new Image(getClass().getResource("/com/example/project/images/background.jpg").toExternalForm());
+        BackgroundImage bgimg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false,false,true,true));
+        anchor_pane.setBackground(new Background(bgimg));
     }
 
     public int size_for_grid(){

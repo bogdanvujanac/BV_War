@@ -31,8 +31,13 @@ public class StartManager {
             }
         });
 
+        stage.setMaximized(true);
+        stage.setResizable(false);
+
         stage.setScene(scene);
+        stage.setFullScreenExitHint("");
         stage.show();
+        Platform.runLater(() -> stage.setFullScreen(true));
     }
 
     private void on_btn_start_click(Stage stage) throws IOException {

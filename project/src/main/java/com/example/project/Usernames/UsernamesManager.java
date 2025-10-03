@@ -1,8 +1,10 @@
 package com.example.project.Usernames;
 
 import com.example.project.Game.GameManager;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,11 +28,33 @@ public class UsernamesManager {
         });
 
         stage.setScene(scene);
+
+        stage.setMaximized(true);
+        stage.setResizable(false);
+
+        stage.setScene(scene);
+        stage.setFullScreenExitHint("");
         stage.show();
+        Platform.runLater(() -> stage.setFullScreen(true));
     }
 
     private void on_btn_play_click(Stage stage) throws IOException {
-        GameManager gameManager = new GameManager(controller.size_for_grid());
-        gameManager.Show(stage);
+
+        if(controller.get_username1().isBlank() || controller.get_username2().isBlank()){
+            /*Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill out all the fields");
+            alert.showAndWait();*/
+
+            WarningMessage.WarningIsBlank(stage);
+        }
+        else if(controller.get_username1().equalsIgnoreCase(controller.get_username2())){
+            WarningMessage.WarningIsEqual(stage);
+        }
+        else {
+            GameManager gameManager = new GameManager(controller.size_for_grid());
+            gameManager.Show(stage);
+        }
     }
 }
