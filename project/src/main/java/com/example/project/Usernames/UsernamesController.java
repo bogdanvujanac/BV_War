@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 public class UsernamesController {
 
     @FXML
-    public AnchorPane anchor_pane;
+    private AnchorPane anchor_pane;
 
     @FXML
     private Button btn_play;

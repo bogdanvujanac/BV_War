@@ -11,6 +11,10 @@ import javafx.stage.StageStyle;
 
 public class WarningMessage {
 
+    // TODO: refactor
+    // 1. create one method which shows pop up with message
+    // 2. move this class to the package - Helper, Utilises or whatever
+    // 3. create constants in the constants class and use them instead of hardcoded string
     public static void WarningIsBlank(Stage stage){
         Stage child = new Stage();
         child.initOwner(stage);

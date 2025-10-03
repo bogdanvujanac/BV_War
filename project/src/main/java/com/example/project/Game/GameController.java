@@ -2,12 +2,15 @@ package com.example.project.Game;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 
 public class GameController {
 
     @FXML
-    private GridPane grid_pane_game;
+    private AnchorPane anchor_pane;
+
+    @FXML
+    private Pane board_pane;
 
     public Button[][] matrix_buttons;
 
@@ -15,18 +18,34 @@ public class GameController {
         create_board(grid_size);
     }
 
-    private void create_board(int n){
-        GridPane grid =  new GridPane(n, n);
-        matrix_buttons =  new Button[n][n];
+    private void create_board(int n) {
+        GridPane grid = new GridPane();
+        matrix_buttons = new Button[n][n];
 
-        for( int i = 0; i < n; i++ ) {
-            for(int j=0; j<n; j++ ) {
-                matrix_buttons[i][j] = new Button();
-                grid.add(matrix_buttons[i][j], i, j);
+        for (int i = 0; i < n; i++) {
+            ColumnConstraints col = new ColumnConstraints();
+            col.setPercentWidth(100.0 / n);
+            grid.getColumnConstraints().add(col);
+
+            RowConstraints row = new RowConstraints();
+            row.setPercentHeight(100.0 / n);
+            grid.getRowConstraints().add(row);
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                Button btn = new Button();
+                btn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                matrix_buttons[i][j] = btn;
+                grid.add(btn, i, j);
             }
         }
 
-        grid_pane_game.add(grid,1,1);
+        grid.prefWidthProperty().bind(board_pane.widthProperty());
+        grid.prefHeightProperty().bind(board_pane.heightProperty());
+
+        board_pane.getChildren().clear();
+        board_pane.getChildren().add(grid);
     }
 
     private void create_button_actions(){
