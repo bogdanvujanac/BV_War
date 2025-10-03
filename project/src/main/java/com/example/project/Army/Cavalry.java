@@ -3,14 +3,17 @@ package com.example.project.Army;
 import com.example.project.Constants;
 import com.example.project.Map.Board;
 import com.example.project.Map.Field;
+import javafx.scene.image.Image;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cavalry extends TheArmy {
-    protected Cavalry() {
-        super(Constants.cavalry_max_health, Constants.cavalry_max_health, Constants.cavalry_strength_of_attack);
+    public Cavalry() {
+        super(Constants.cavalry_max_health, Constants.cavalry_max_health, Constants.cavalry_strength_of_attack);//, new Image("com/example/project/images/calavry2.png"));
+
+        image = new Image(getClass().getResource("/com/example/project/images/cavalry2.png").toExternalForm());
     }
 
     @Override

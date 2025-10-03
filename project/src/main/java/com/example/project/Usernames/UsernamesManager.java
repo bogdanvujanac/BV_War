@@ -53,7 +53,7 @@ public class UsernamesManager {
             WarningMessage.WarningIsEqual(stage);
         }
         else {
-            GameManager gameManager = new GameManager(controller.size_for_grid());
+            GameManager gameManager = new GameManager(controller.size_for_grid(), controller.get_username1(), controller.get_username2());
             gameManager.Show(stage);
         }
     }

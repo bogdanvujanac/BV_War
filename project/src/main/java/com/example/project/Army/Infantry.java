@@ -3,6 +3,7 @@ package com.example.project.Army;
 import com.example.project.Constants;
 import com.example.project.Map.Board;
 import com.example.project.Map.Field;
+import javafx.scene.image.Image;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -11,7 +12,9 @@ import java.util.List;
 public class Infantry extends TheArmy{
 
     public Infantry() {
-        super(Constants.infantry_max_health, Constants.infantry_max_health, Constants.infantry_strength_of_attack);
+        super(Constants.infantry_max_health, Constants.infantry_max_health, Constants.infantry_strength_of_attack);//, new Image("com/example/project/images/infaantry.png"));
+
+        image = new Image(getClass().getResource("/com/example/project/images/infaantry.png").toExternalForm());
     }
 
     @Override

@@ -1,8 +1,10 @@
 package com.example.project.Army;
 
+import com.example.project.Game.Player;
 import com.example.project.Map.Board;
 import com.example.project.Map.Field;
-import javafx.util.Pair;
+import javafx.scene.image.Image;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,18 +15,24 @@ public abstract class TheArmy {
     protected int health;
     protected int strength_of_attack;
 
-    //TODO: protected Player player;
+    protected Image image;
+
+    protected Player player;
 
     public abstract List<Field> available_moves(Board board, Field field);
     public abstract List<Field> available_attacks(Board board, Field field); // TODO: filter by owner
 
-    protected TheArmy(int max_health, int health, int strength_of_attack) {
+    protected TheArmy(int max_health, int health, int strength_of_attack){//}, Image image) {
         this.max_health = max_health;
         this.health = health;
         this.strength_of_attack = strength_of_attack;
+
+        //this.image = image;
     }
 
-
+    public void set_player(Player player) {
+        this.player = player;
+    }
 
     /// x, y -> current field
     /// step_x, step_y -> direction
@@ -86,5 +94,9 @@ public abstract class TheArmy {
         }
 
         return attacks;
+    }
+
+    public Image get_image(){
+        return image;
     }
 }

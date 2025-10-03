@@ -3,14 +3,17 @@ package com.example.project.Army;
 import com.example.project.Constants;
 import com.example.project.Map.Board;
 import com.example.project.Map.Field;
+import javafx.scene.image.Image;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cannon extends TheArmy{
-    protected Cannon() {
-        super(Constants.cannon_max_health, Constants.cannon_max_health, Constants.cannon_strength_of_attack);
+    public Cannon() {
+        super(Constants.cannon_max_health, Constants.cannon_max_health, Constants.cannon_strength_of_attack);//, new Image("/com/example/project/images/cannon.png"));
+
+        image = new Image(getClass().getResource("/com/example/project/images/cannon.png").toExternalForm());
     }
 
     @Override
@@ -36,4 +39,5 @@ public class Cannon extends TheArmy{
 
         return attack_fields;
     }
+
 }

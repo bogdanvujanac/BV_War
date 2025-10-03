@@ -35,7 +35,8 @@ public class GameController {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 Button btn = new Button();
-                btn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                //btn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                btn.setMaxSize(board_pane.getWidth() / n, board_pane.getHeight() / n);
                 matrix_buttons[i][j] = btn;
                 grid.add(btn, i, j);
             }
