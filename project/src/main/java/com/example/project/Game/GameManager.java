@@ -20,17 +20,13 @@ public class GameManager {
     private Player player1;
     private Player player2;
 
-    private int on_turn; // 1, 2
-
-    private Board board;
+    //private Board board;
 
     public GameManager(int grid_size, String username1, String username2){
         this.grid_size = grid_size;
 
         player1 = new Player(username1);
         player2 = new Player(username2);
-
-        on_turn = new Random().nextInt(2) + 1;
 
     }
 
@@ -56,28 +52,39 @@ public class GameManager {
     }
 
     private void start_game(){
-        board = new Board(grid_size, controller.matrix_buttons);
         // 1.
+        choose_current_player();
+        // 2.
         put_army_on_map();
+    }
+
+    private void choose_current_player(){
+        int on_turn = new Random().nextInt(2) + 1;
+        if(on_turn == 1)
+            GameState.current_player = player1;
+        else
+            GameState.current_player = player2;
     }
 
     private void put_army_on_map(){
 
-        //TODO
-        board.get_field(0, 1).set_army(new Cannon(), player1);
-        board.get_field(1, 1).set_army(new Cavalry(), player1);
-        board.get_field(5, 1).set_army(new Cavalry(), player1);
-        board.get_field(3, 0).set_army(new Tank(), player1);
-        board.get_field(2, 1).set_army(new Infantry(), player1);
-        board.get_field(4, 0).set_army(new Infantry(), player1);
-        board.get_field(4, 1).set_army(new Infantry(), player1);
+        GameState.board = new Board(grid_size, controller.matrix_buttons);
 
-        board.get_field(grid_size-1, grid_size-1-1).set_army(new Cannon(), player2);
-        board.get_field(grid_size-1-1, grid_size-1-1).set_army(new Cavalry(), player2);
-        board.get_field(grid_size-1-5, grid_size-1-1).set_army(new Cavalry(), player2);
-        board.get_field(grid_size-1-3, grid_size-1).set_army(new Tank(), player2);
-        board.get_field(grid_size-1-2, grid_size-1-1).set_army(new Infantry(), player2);
-        board.get_field(grid_size-1-4, grid_size-1).set_army(new Infantry(), player2);
-        board.get_field(grid_size-1-4, grid_size-1-1).set_army(new Infantry(), player2);
+        //TODO
+        GameState.board.get_field(0, 1).set_army(new Cannon(), player1);
+        GameState.board.get_field(1, 1).set_army(new Cavalry(), player1);
+        GameState.board.get_field(5, 1).set_army(new Cavalry(), player1);
+        GameState.board.get_field(3, 0).set_army(new Tank(), player1);
+        GameState.board.get_field(2, 1).set_army(new Infantry(), player1);
+        GameState.board.get_field(4, 0).set_army(new Infantry(), player1);
+        GameState.board.get_field(4, 1).set_army(new Infantry(), player1);
+
+        GameState.board.get_field(grid_size-1, grid_size-1-1).set_army(new Cannon(), player2);
+        GameState.board.get_field(grid_size-1-1, grid_size-1-1).set_army(new Cavalry(), player2);
+        GameState.board.get_field(grid_size-1-5, grid_size-1-1).set_army(new Cavalry(), player2);
+        GameState.board.get_field(grid_size-1-3, grid_size-1).set_army(new Tank(), player2);
+        GameState.board.get_field(grid_size-1-2, grid_size-1-1).set_army(new Infantry(), player2);
+        GameState.board.get_field(grid_size-1-4, grid_size-1).set_army(new Infantry(), player2);
+        GameState.board.get_field(grid_size-1-4, grid_size-1-1).set_army(new Infantry(), player2);
     }
 }

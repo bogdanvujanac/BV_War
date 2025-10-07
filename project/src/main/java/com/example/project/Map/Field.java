@@ -1,18 +1,20 @@
 package com.example.project.Map;
 
 import com.example.project.Army.TheArmy;
+import com.example.project.Game.GameState;
 import com.example.project.Game.Player;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+
+import java.util.List;
 
 public class Field {
 
     private int x;
     private int y;
+    private Button button;
 
     private TheArmy army;
-
-    private Button button;
 
     public Field(int x, int y, Button button) {
         this.x = x;
@@ -20,6 +22,35 @@ public class Field {
         this.army = null;
 
         this.button = button;
+
+        button.setOnAction(e -> on_field_button_click());
+    }
+
+    void on_field_button_click(){
+        if(GameState.first_click){
+            if(army == null || army.player != GameState.current_player){
+                return;
+            }
+            if(army.player == GameState.current_player){
+                List<Field> attacks = GameState.board.available_attacks(this);
+                List<Field> moves = GameState.board.available_moves(this);
+                // gui: show fields
+                GameState.first_click = false;
+            }
+        }
+        else{
+            if(army == null) {
+                // move() ili ne
+            }
+            else if(army.player != GameState.current_player) {
+                // atack() ili ne
+            }
+            else {
+                // nista
+            }
+
+            GameState.first_click = true;
+        }
     }
 
     public boolean is_occupied(){

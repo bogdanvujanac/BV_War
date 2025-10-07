@@ -68,15 +68,12 @@ public class GameController {
     private void create_button_actions(){
         for( int i = 0; i < 8; i++ ) {
             for(int j=0; j<8; j++ ) {
-                Button btn = matrix_buttons[i][j];
-                btn.setOnMouseClicked(e -> on_matrix_button_click());
+                Button btn = matrix_buttons[i][j]; // TODO: think about where to initialize buttons
             }
         }
     }
 
-    private void on_matrix_button_click() {
-        // TODO
-    }
+
 
 
 }
