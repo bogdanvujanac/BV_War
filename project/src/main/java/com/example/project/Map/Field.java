@@ -36,11 +36,14 @@ public class Field {
                 List<Field> moves = GameState.board.available_moves(this);
                 // gui: show fields
                 GameState.first_click = false;
+                GameState.selected_field = this;
             }
         }
         else{
             if(army == null) {
                 // move() ili ne
+                this.set_army(GameState.selected_field.get_army(), GameState.current_player);
+                GameState.selected_field.set_army(null, null);
             }
             else if(army.player != GameState.current_player) {
                 // atack() ili ne
@@ -50,6 +53,7 @@ public class Field {
             }
 
             GameState.first_click = true;
+            GameState.selected_field = null;
         }
     }
 
@@ -59,7 +63,9 @@ public class Field {
 
     public void set_army(TheArmy army, Player player) {
         this.army = army;
-        this.army.set_player(player);
+
+        if(army != null)
+            this.army.set_player(player);
 
         set_picture();
     }

@@ -46,7 +46,7 @@ public abstract class TheArmy {
         int x = field.get_x();
         int y = field.get_y();
 
-        for(int i=1; i<range_moves; i++){
+        for(int i=1; i<=range_moves; i++){
             int new_x = x + step_x*i;
             int new_y = y + step_y*i;
 
@@ -73,7 +73,7 @@ public abstract class TheArmy {
         int y = field.get_y();
 
 
-        for(int i=1; i<attack_range; i++){
+        for(int i=1; i<=attack_range; i++){
             int new_x = x + step_x*i;
             int new_y = y + step_y*i;
 
