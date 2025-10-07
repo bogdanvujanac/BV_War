@@ -12,9 +12,9 @@ import java.util.List;
 public class Infantry extends TheArmy{
 
     public Infantry() {
-        super(Constants.infantry_max_health, Constants.infantry_max_health, Constants.infantry_strength_of_attack);//, new Image("com/example/project/images/infaantry.png"));
+        super(Constants.infantry_max_health, Constants.infantry_max_health, Constants.infantry_strength_of_attack, "/com/example/project/images/infantry.png");//, new Image("com/example/project/images/infaantry.png"));
 
-        image = new Image(getClass().getResource("/com/example/project/images/infaantry.png").toExternalForm());
+        //image = new Image(getClass().getResource("/com/example/project/images/infantry.png").toExternalForm());
     }
 
     @Override

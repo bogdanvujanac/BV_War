@@ -22,12 +22,12 @@ public abstract class TheArmy {
     public abstract List<Field> available_moves(Board board, Field field);
     public abstract List<Field> available_attacks(Board board, Field field); // TODO: filter by owner
 
-    protected TheArmy(int max_health, int health, int strength_of_attack){//}, Image image) {
+    protected TheArmy(int max_health, int health, int strength_of_attack, String image_path){//}, Image image) {
         this.max_health = max_health;
         this.health = health;
         this.strength_of_attack = strength_of_attack;
 
-        //this.image = image;
+        this.image = new Image(getClass().getResourceAsStream(image_path));
     }
 
     public void set_player(Player player) {

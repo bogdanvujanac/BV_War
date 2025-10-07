@@ -29,7 +29,7 @@ public class UsernamesController {
         cb_field.getItems().addAll("6x6","7x7","8x8", "9x9","10x10");
         cb_field.setValue("6x6");
 
-        Image img = new Image(getClass().getResource("/com/example/project/images/background.jpg").toExternalForm());
+        Image img = new Image(getClass().getResource("/com/example/project/images/background2.jpg").toExternalForm());
         BackgroundImage bgimg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false,false,true,true));
         anchor_pane.setBackground(new Background(bgimg));
     }
