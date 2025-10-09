@@ -82,9 +82,8 @@ public abstract class TheArmy {
 
             Field field1 = board.get_field(new_x, new_y);
             if(field1.is_occupied()) {
-                //TODO: check who occupied the field
-                //if(who)
-                attacks.add(field1);
+                if(field1.get_army().player != field.get_army().player)
+                    attacks.add(field1);
 
                 if(!overjump)
                     break;

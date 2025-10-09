@@ -56,6 +56,8 @@ public class GameManager {
         choose_current_player();
         // 2.
         put_army_on_map();
+        // 3.
+        play();
     }
 
     private void choose_current_player(){
@@ -86,5 +88,35 @@ public class GameManager {
         GameState.board.get_field(grid_size-1-2, grid_size-1-1).set_army(new Infantry(), player2);
         GameState.board.get_field(grid_size-1-4, grid_size-1).set_army(new Infantry(), player2);
         GameState.board.get_field(grid_size-1-4, grid_size-1-1).set_army(new Infantry(), player2);
+    }
+
+    private void play(){
+        //while(true){
+            play_turn();
+            if(check_if_end_game())
+                return;
+            change_player();
+        //}
+    }
+
+    private void play_turn(){
+
+    }
+
+    private boolean check_if_end_game(){
+        if(GameState.current_player == player1 && player2.number_of_armies == 0) {
+                return true;
+        }
+        else if(GameState.current_player == player2 && player1.number_of_armies == 0){
+                return true;
+        }
+        return false;
+    }
+
+    private void change_player(){
+        if(GameState.current_player == player1)
+            GameState.current_player = player2;
+        else
+            GameState.current_player = player1;
     }
 }

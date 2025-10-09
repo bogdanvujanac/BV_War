@@ -8,4 +8,6 @@ public class Player {
         this.username = username;
     }
 
+    public int number_of_armies = 7;
+
 }
