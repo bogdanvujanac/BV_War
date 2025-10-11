@@ -54,7 +54,7 @@ public class Field {
         }
         else{
             if(army == null) {
-                // move() ili ne
+                // MOVE
                 if(GameState.possible_move_fields.contains(this)) {
                     this.set_army(GameState.selected_field.get_army(), GameState.current_player);
                     GameState.selected_field.set_army(null, null);
@@ -73,7 +73,8 @@ public class Field {
 
 
             for(Field f : GameState.possible_move_fields){
-                f.button.setStyle("");
+                if(this != f)
+                    f.button.setStyle("");
             }
 
             GameState.possible_move_fields = null;
@@ -91,6 +92,11 @@ public class Field {
             this.army.set_player(player);
 
         set_picture();
+
+        if(army != null)
+            set_color(player.color);
+        else
+            set_color("");
     }
 
     public TheArmy get_army(){

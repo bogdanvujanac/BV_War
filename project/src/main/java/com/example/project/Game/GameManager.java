@@ -4,6 +4,7 @@ import com.example.project.Army.Cannon;
 import com.example.project.Army.Cavalry;
 import com.example.project.Army.Infantry;
 import com.example.project.Army.Tank;
+import com.example.project.Constants;
 import com.example.project.Map.Board;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -25,8 +26,8 @@ public class GameManager {
     public GameManager(int grid_size, String username1, String username2){
         this.grid_size = grid_size;
 
-        player1 = new Player(username1);
-        player2 = new Player(username2);
+        player1 = new Player(username1, Constants.player1_color);
+        player2 = new Player(username2, Constants.player2_color);
 
     }
 
