@@ -39,20 +39,16 @@ public class Field {
             if(army.player == GameState.current_player){
                 List<Field> attacks = GameState.board.available_attacks(this);
                 GameState.possible_move_fields = GameState.board.available_moves(this);
-                // gui: show fields
+
                 GameState.first_click = false;
                 GameState.selected_field = this;
 
                 for(Field f : attacks){
-                    f.button.setStyle("-fx-background-color: red; -fx-padding: 0; -fx-border-color: transparent;");
-                    ImageView iv = (ImageView) f.button.getGraphic();
-                    applyOverlay(iv, f.button, Color.RED, 0.4);
+                    f.set_color("#F08080");
                 }
 
                 for(Field f : GameState.possible_move_fields){
-                    f.button.setStyle("-fx-background-color: yellow; -fx-padding: 0; -fx-border-color: transparent;");
-                    ImageView iv = (ImageView) f.button.getGraphic();
-                    applyOverlay(iv, f.button, Color.YELLOW, 0.4);
+                    f.set_color("#87CEEB");
                 }
             }
         }
@@ -66,11 +62,10 @@ public class Field {
             }
             else if(army.player != GameState.current_player) {
                 // atack() ili ne
-                System.out.println(army.player + " " + GameState.current_player);
+
             }
             else {
                 // nista
-                System.out.println("nista");
             }
 
             GameState.first_click = true;
@@ -78,8 +73,7 @@ public class Field {
 
 
             for(Field f : GameState.possible_move_fields){
-                f.button.setStyle("-fx-background-color: none; -fx-padding: 0; -fx-border-color: transparent;");
-
+                f.button.setStyle("");
             }
 
             GameState.possible_move_fields = null;
@@ -138,8 +132,10 @@ public class Field {
                 )
         );
         imageView.setEffect(blend);
+    }
 
-
+    private void set_color(String color){
+        button.setStyle("-fx-background-color: " + color + "; -fx-padding: 0; -fx-border-color: transparent;");
     }
 
 }

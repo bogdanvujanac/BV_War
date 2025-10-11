@@ -1,6 +1,7 @@
 package com.example.project.Game;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
@@ -31,17 +32,17 @@ public class GameController {
 
         for (int i = 0; i < n; i++) {
             ColumnConstraints col = new ColumnConstraints();
-            col.setPercentWidth(100.0 / n);
+            col.setPercentWidth(80.0 / n);
             grid.getColumnConstraints().add(col);
 
             RowConstraints row = new RowConstraints();
-            row.setPercentHeight(100.0 / n);
+            row.setPercentHeight(80.0 / n);
             grid.getRowConstraints().add(row);
         }
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                Button btn = new Button();
+                Button btn = new Button(); // TODO: think about where to initialize buttons
                // btn.setMaxSize(board_pane.getWidth() / n, board_pane.getHeight() / n);
                 btn.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
                 //btn.setMinSize(board_pane.getWidth() / n, board_pane.getHeight() / n);
@@ -67,17 +68,7 @@ public class GameController {
         grid.prefHeightProperty().bind(board_pane.heightProperty());
 
         board_pane.getChildren().setAll(grid);
-
-        //board_pane.getChildren().clear();
-        //board_pane.getChildren().add(grid);
-    }
-
-    private void create_button_actions(){
-        for( int i = 0; i < 8; i++ ) {
-            for(int j=0; j<8; j++ ) {
-                Button btn = matrix_buttons[i][j]; // TODO: think about where to initialize buttons
-            }
-        }
+        grid.setAlignment(Pos.TOP_CENTER);
     }
 
     public void write_usernames(String username1, String username2){
