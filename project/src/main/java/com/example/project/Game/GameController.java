@@ -2,6 +2,7 @@ package com.example.project.Game;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 
 public class GameController {
@@ -11,6 +12,12 @@ public class GameController {
 
     @FXML
     private Pane board_pane;
+
+    @FXML
+    private Label lblUsername1;
+    @FXML
+    private Label lblUsername2;
+
 
     public Button[][] matrix_buttons;
 
@@ -73,6 +80,10 @@ public class GameController {
         }
     }
 
+    public void write_usernames(String username1, String username2){
+        lblUsername1.setText(username1);
+        lblUsername2.setText(username2);
+    }
 
 
 

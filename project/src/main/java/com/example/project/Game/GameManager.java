@@ -37,6 +37,7 @@ public class GameManager {
         // controller initialization
         controller = fxmlLoader.getController();
         controller.init(grid_size);
+        controller.write_usernames(player1.get_username(), player2.get_username());
 
         stage.setMaximized(true);
         stage.setResizable(false);
