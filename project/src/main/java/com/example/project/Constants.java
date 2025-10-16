@@ -62,4 +62,6 @@ public final class Constants {
 
     public static final String player1_color = "#90EE90";
     public static final String player2_color = "#EEE8AA";
+    public static final String attack_color = "#F08080";
+    public static final String move_color = "#87CEEB";
 }

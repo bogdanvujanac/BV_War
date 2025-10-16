@@ -1,6 +1,8 @@
 package com.example.project.Map;
 
 import com.example.project.Army.TheArmy;
+import com.example.project.Constants;
+import com.example.project.Game.GameHelper;
 import com.example.project.Game.GameState;
 import com.example.project.Game.Player;
 import javafx.scene.control.Button;
@@ -11,6 +13,7 @@ import javafx.scene.effect.ColorInput;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
+import java.awt.*;
 import java.util.List;
 
 public class Field {
@@ -32,25 +35,12 @@ public class Field {
     }
 
     void on_field_button_click(){
+        // TODO: refactor
         if(GameState.first_click){
-            if(army == null || army.player != GameState.current_player){
-                return;
-            }
-            if(army.player == GameState.current_player){
-                GameState.possible_attack_fields = GameState.board.available_attacks(this);
-                GameState.possible_move_fields = GameState.board.available_moves(this);
+            GameHelper.save_first_click(this);
 
-                GameState.first_click = false;
-                GameState.selected_field = this;
-
-                for(Field f : GameState.possible_attack_fields){
-                    f.set_color("#F08080");
-                }
-
-                for(Field f : GameState.possible_move_fields){
-                    f.set_color("#87CEEB");
-                }
-            }
+            Field.paint_fields(GameState.possible_attack_fields, Constants.attack_color);
+            Field.paint_fields(GameState.possible_move_fields, Constants.move_color);
         }
         else{
             if(army == null) {
@@ -79,7 +69,7 @@ public class Field {
                             GameState.selected_field.set_army(null, null);
                         }
                     } else{ // >
-                        army.decrease_health(GameState.selected_field.get_army().get_strength()*2);
+                        army.decrease_health((int) (GameState.selected_field.get_army().get_strength()*1.5));
                         if(army.get_health() <= 0){
                             set_army(null, null);
                         }
@@ -93,17 +83,12 @@ public class Field {
             GameState.first_click = true;
             GameState.selected_field = null;
 
-            for(Field f : GameState.possible_move_fields){
-                if(this != f)
-                    f.button.setStyle("");
-            }
 
-            for(Field f : GameState.possible_attack_fields){
-                if(this != f)
-                    f.button.setStyle("");
-            }
+            Field.set_fields_style(GameState.possible_move_fields.stream().filter(f -> f != this).toList(), "");
+            Field.set_fields_style(GameState.possible_attack_fields.stream().filter(f -> f != this).toList(), "");
 
             GameState.possible_move_fields = null;
+            GameState.possible_attack_fields = null;
         }
     }
 
@@ -166,8 +151,20 @@ public class Field {
         imageView.setEffect(blend);
     }
 
-    private void set_color(String color){
+    public void set_color(String color){
         button.setStyle("-fx-background-color: " + color + "; -fx-padding: 0; -fx-border-color: transparent;");
+    }
+
+    public static void paint_fields(List<Field> fields, String color){
+        for(Field f : fields){
+            f.set_color(color);
+        }
+    }
+
+    public static void set_fields_style(List<Field> fields, String style){
+        for(Field f : fields){
+            f.button.setStyle(style);
+        }
     }
 
 }
