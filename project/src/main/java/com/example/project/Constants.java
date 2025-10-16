@@ -58,4 +58,8 @@ public final class Constants {
                     new Pair<>(-1, -1)
             )
     );
+
+
+    public static final String player1_color = "#90EE90";
+    public static final String player2_color = "#EEE8AA";
 }

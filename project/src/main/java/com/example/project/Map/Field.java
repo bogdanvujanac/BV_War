@@ -39,26 +39,22 @@ public class Field {
             if(army.player == GameState.current_player){
                 GameState.possible_attack_fields = GameState.board.available_attacks(this);
                 GameState.possible_move_fields = GameState.board.available_moves(this);
-                // gui: show fields
+
                 GameState.first_click = false;
                 GameState.selected_field = this;
 
                 for(Field f : GameState.possible_attack_fields){
-                    f.button.setStyle("-fx-background-color: red; -fx-padding: 0; -fx-border-color: transparent;");
-                    ImageView iv = (ImageView) f.button.getGraphic();
-                    applyOverlay(iv, f.button, Color.RED, 0.4);
+                    f.set_color("#F08080");
                 }
 
                 for(Field f : GameState.possible_move_fields){
-                    f.button.setStyle("-fx-background-color: yellow; -fx-padding: 0; -fx-border-color: transparent;");
-                    ImageView iv = (ImageView) f.button.getGraphic();
-                    applyOverlay(iv, f.button, Color.YELLOW, 0.4);
+                    f.set_color("#87CEEB");
                 }
             }
         }
         else{
             if(army == null) {
-                // move() ili ne
+                // MOVE
                 if(GameState.possible_move_fields.contains(this)) {
                     this.set_army(GameState.selected_field.get_army(), GameState.current_player);
                     GameState.selected_field.set_army(null, null);
@@ -92,15 +88,14 @@ public class Field {
             }
             else {
                 // nista
-                System.out.println("nista");
             }
 
             GameState.first_click = true;
             GameState.selected_field = null;
 
             for(Field f : GameState.possible_move_fields){
-                f.button.setStyle("-fx-background-color: none; -fx-padding: 0; -fx-border-color: transparent;");
-
+                if(this != f)
+                    f.button.setStyle("");
             }
 
             for(Field f : GameState.possible_attack_fields){
@@ -123,6 +118,11 @@ public class Field {
             this.army.set_player(player);
 
         set_picture();
+
+        if(army != null)
+            set_color(player.color);
+        else
+            set_color("");
     }
 
     public TheArmy get_army(){
@@ -164,8 +164,10 @@ public class Field {
                 )
         );
         imageView.setEffect(blend);
+    }
 
-
+    private void set_color(String color){
+        button.setStyle("-fx-background-color: " + color + "; -fx-padding: 0; -fx-border-color: transparent;");
     }
 
 }

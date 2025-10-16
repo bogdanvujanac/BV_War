@@ -8,14 +8,14 @@
 <AnchorPane fx:id="anchor_pane" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.Game.GameController">
    <children>
       <Pane fx:id="board_pane" maxHeight="-Infinity" maxWidth="-Infinity" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0" />
-      <Label fx:id="lblUsername1" layoutX="71.0" layoutY="44.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="80.0">
+      <Label fx:id="lblUsername1" layoutX="71.0" layoutY="44.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="80.0">
          <font>
-            <Font name="Calisto MT" size="14.0" />
+            <Font name="Calisto MT" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblUsername2" layoutX="288.0" layoutY="44.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="80.0">
+      <Label fx:id="lblUsername2" layoutX="288.0" layoutY="44.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="80.0">
          <font>
-            <Font name="Calisto MT" size="14.0" />
+            <Font name="Calisto MT" size="20.0" />
          </font>
       </Label>
    </children>

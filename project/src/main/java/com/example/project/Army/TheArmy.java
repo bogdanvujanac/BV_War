@@ -20,7 +20,7 @@ public abstract class TheArmy {
     public Player player;
 
     public abstract List<Field> available_moves(Board board, Field field);
-    public abstract List<Field> available_attacks(Board board, Field field); // TODO: filter by owner
+    public abstract List<Field> available_attacks(Board board, Field field);
 
     public abstract int get_rank();
 
