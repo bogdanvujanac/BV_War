@@ -16,6 +16,10 @@ public class Cannon extends TheArmy{
         //image = new Image(getClass().getResource("/com/example/project/images/cannon.png").toExternalForm());
     }
 
+    public int get_rank(){
+        return Constants.cannon_rank;
+    }
+
     @Override
     public List<Field> available_moves(Board board, Field field) {
         // cannon can move only one field in 4 directions

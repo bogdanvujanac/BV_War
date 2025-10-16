@@ -37,13 +37,13 @@ public class Field {
                 return;
             }
             if(army.player == GameState.current_player){
-                List<Field> attacks = GameState.board.available_attacks(this);
+                GameState.possible_attack_fields = GameState.board.available_attacks(this);
                 GameState.possible_move_fields = GameState.board.available_moves(this);
                 // gui: show fields
                 GameState.first_click = false;
                 GameState.selected_field = this;
 
-                for(Field f : attacks){
+                for(Field f : GameState.possible_attack_fields){
                     f.button.setStyle("-fx-background-color: red; -fx-padding: 0; -fx-border-color: transparent;");
                     ImageView iv = (ImageView) f.button.getGraphic();
                     applyOverlay(iv, f.button, Color.RED, 0.4);
@@ -65,8 +65,30 @@ public class Field {
                 }
             }
             else if(army.player != GameState.current_player) {
-                // atack() ili ne
-                System.out.println(army.player + " " + GameState.current_player);
+                // ATTACK
+                if(GameState.possible_attack_fields.contains(this)){
+                    if(GameState.selected_field.get_army().get_rank() == army.get_rank()){
+                        army.decrease_health(GameState.selected_field.get_army().get_strength());
+                        if(army.get_health() <= 0){
+                            set_army(null, null);
+                        }
+                    }
+                    else if(GameState.selected_field.get_army().get_rank() < army.get_rank()){
+                        army.decrease_health(GameState.selected_field.get_army().get_strength() / 2);
+                        GameState.selected_field.get_army().decrease_health(army.get_strength() / 2);
+                        if(army.get_health() <= 0){
+                            set_army(null, null);
+                        }
+                        if(GameState.selected_field.get_army().get_health() <= 0){
+                            GameState.selected_field.set_army(null, null);
+                        }
+                    } else{ // >
+                        army.decrease_health(GameState.selected_field.get_army().get_strength()*2);
+                        if(army.get_health() <= 0){
+                            set_army(null, null);
+                        }
+                    }
+                }
             }
             else {
                 // nista
@@ -76,10 +98,14 @@ public class Field {
             GameState.first_click = true;
             GameState.selected_field = null;
 
-
             for(Field f : GameState.possible_move_fields){
                 f.button.setStyle("-fx-background-color: none; -fx-padding: 0; -fx-border-color: transparent;");
 
+            }
+
+            for(Field f : GameState.possible_attack_fields){
+                if(this != f)
+                    f.button.setStyle("");
             }
 
             GameState.possible_move_fields = null;

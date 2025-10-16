@@ -22,6 +22,8 @@ public abstract class TheArmy {
     public abstract List<Field> available_moves(Board board, Field field);
     public abstract List<Field> available_attacks(Board board, Field field); // TODO: filter by owner
 
+    public abstract int get_rank();
+
     protected TheArmy(int max_health, int health, int strength_of_attack, String image_path){//}, Image image) {
         this.max_health = max_health;
         this.health = health;
@@ -97,5 +99,17 @@ public abstract class TheArmy {
 
     public Image get_image(){
         return image;
+    }
+
+    public void decrease_health(int strength){
+        health -= strength;
+    }
+
+    public int get_strength(){
+        return strength_of_attack;
+    }
+
+    public int get_health(){
+        return health;
     }
 }

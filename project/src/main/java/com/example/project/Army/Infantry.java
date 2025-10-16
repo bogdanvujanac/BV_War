@@ -17,6 +17,10 @@ public class Infantry extends TheArmy{
         //image = new Image(getClass().getResource("/com/example/project/images/infantry.png").toExternalForm());
     }
 
+    public int get_rank(){
+        return Constants.infantry_rank;
+    }
+
     @Override
     public List<Field> available_moves(Board board, Field field) {
         // infantry can move two fields in 8 directions

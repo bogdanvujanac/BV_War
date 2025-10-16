@@ -16,6 +16,10 @@ public class Cavalry extends TheArmy {
         //image = new Image(getClass().getResource("/com/example/project/images/cavalry.png").toExternalForm());
     }
 
+    public int get_rank(){
+        return Constants.cavalry_rank;
+    }
+
     @Override
     public List<Field> available_moves(Board board, Field field) {
         // cavalry can move three fields in 8 directions with possibility to jump
