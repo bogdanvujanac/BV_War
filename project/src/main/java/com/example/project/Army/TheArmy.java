@@ -20,7 +20,7 @@ public abstract class TheArmy {
     public Player player;
 
     public abstract List<Field> available_moves(Board board, Field field);
-    public abstract List<Field> available_attacks(Board board, Field field); // TODO: filter by owner
+    public abstract List<Field> available_attacks(Board board, Field field);
 
     protected TheArmy(int max_health, int health, int strength_of_attack, String image_path){//}, Image image) {
         this.max_health = max_health;

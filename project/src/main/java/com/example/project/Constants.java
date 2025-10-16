@@ -57,5 +57,5 @@ public final class Constants {
 
 
     public static final String player1_color = "#90EE90";
-    public static final String player2_color = "#FFFFE0";
+    public static final String player2_color = "#EEE8AA";
 }

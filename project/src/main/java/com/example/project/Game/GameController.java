@@ -1,9 +1,11 @@
 package com.example.project.Game;
 
+import com.example.project.Constants;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
 public class GameController {
@@ -18,6 +20,13 @@ public class GameController {
     private Label lblUsername1;
     @FXML
     private Label lblUsername2;
+
+    @FXML
+    public void initialize(){
+        Image img = new Image(getClass().getResource("/com/example/project/images/military1.jpg").toExternalForm());
+        BackgroundImage bgimg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false,false,true,true));
+        anchor_pane.setBackground(new Background(bgimg));
+    }
 
 
     public Button[][] matrix_buttons;
@@ -73,7 +82,10 @@ public class GameController {
 
     public void write_usernames(String username1, String username2){
         lblUsername1.setText(username1);
+        lblUsername1.setStyle("-fx-font-weight: bold;" + "-fx-text-fill: white;" + "-fx-font-size: 20;" + "-fx-background-color:" + Constants.player1_color +";" + "-fx-border-color: black;" + "-fx-border-width: 2px;" + "-fx-background-radius: 8;" + "-fx-border-radius: 8;" + "-fx-padding: 5 10 5 10;");
         lblUsername2.setText(username2);
+        lblUsername2.setStyle("-fx-font-weight: bold;" + "-fx-text-fill: white;" + "-fx-font-size: 20;" + "-fx-background-color:" + Constants.player2_color +";" + "-fx-border-color: black;" + "-fx-border-width: 2px;" + "-fx-background-radius: 8;" + "-fx-border-radius: 8;" + "-fx-padding: 5 10 5 10;");
+
     }
 
 
