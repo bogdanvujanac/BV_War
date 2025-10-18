@@ -3,6 +3,7 @@ package com.example.project.Game;
 import com.example.project.Map.Board;
 import com.example.project.Map.Field;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameState {
@@ -13,6 +14,6 @@ public class GameState {
 
     public static Board board = null;
 
-    public static List<Field> possible_move_fields = null;
-    public static List<Field> possible_attack_fields = null;
+    public static List<Field> possible_move_fields = new ArrayList<Field>();
+    public static List<Field> possible_attack_fields = new ArrayList<>();
 }

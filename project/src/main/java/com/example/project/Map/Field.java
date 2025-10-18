@@ -87,8 +87,8 @@ public class Field {
             Field.set_fields_style(GameState.possible_move_fields.stream().filter(f -> f != this).toList(), "");
             Field.set_fields_style(GameState.possible_attack_fields.stream().filter(f -> f != this).toList(), "");
 
-            GameState.possible_move_fields = null;
-            GameState.possible_attack_fields = null;
+            GameState.possible_move_fields.clear();
+            GameState.possible_attack_fields.clear();
         }
     }
 

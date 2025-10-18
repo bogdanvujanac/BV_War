@@ -13,8 +13,8 @@ public class GameHelper {
         // selected field belongs to current player
         // if(field.get_army().player == GameState.current_player)
 
-        GameState.possible_attack_fields = GameState.board.available_attacks(field);
-        GameState.possible_move_fields = GameState.board.available_moves(field);
+        GameState.possible_attack_fields.addAll(GameState.board.available_attacks(field));
+        GameState.possible_move_fields.addAll(GameState.board.available_moves(field));
 
         GameState.first_click = false;
         GameState.selected_field = field;

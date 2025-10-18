@@ -22,6 +22,9 @@ public class GameController {
     private Label lblUsername2;
 
     @FXML
+    private Button btn_end;
+
+    @FXML
     public void initialize(){
         Image img = new Image(getClass().getResource("/com/example/project/images/military1.jpg").toExternalForm());
         BackgroundImage bgimg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false,false,true,true));
@@ -88,6 +91,8 @@ public class GameController {
 
     }
 
-
+    public Button get_btn_end() {
+        return btn_end;
+    }
 
 }

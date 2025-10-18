@@ -28,7 +28,6 @@ public class GameManager {
 
         player1 = new Player(username1, Constants.player1_color);
         player2 = new Player(username2, Constants.player2_color);
-
     }
 
     public void Show(Stage stage) throws IOException {
@@ -40,6 +39,8 @@ public class GameManager {
         controller.init(grid_size);
         controller.write_usernames(player1.get_username(), player2.get_username());
 
+        controller.get_btn_end().setOnMouseClicked(event -> {click_btn_end_turn();});
+
         stage.setMaximized(true);
         stage.setResizable(false);
 
@@ -49,7 +50,6 @@ public class GameManager {
         stage.show();
         Platform.runLater(() -> stage.setFullScreen(true));
 
-        //
         start_game();
     }
 
@@ -58,8 +58,6 @@ public class GameManager {
         choose_current_player();
         // 2.
         put_army_on_map();
-        // 3.
-        play();
     }
 
     private void choose_current_player(){
@@ -92,19 +90,6 @@ public class GameManager {
         GameState.board.get_field(grid_size-1-4, grid_size-1-1).set_army(new Infantry(), player2);
     }
 
-    private void play(){
-        //while(true){
-            play_turn();
-            if(check_if_end_game())
-                return;
-            change_player();
-        //}
-    }
-
-    private void play_turn(){
-
-    }
-
     private boolean check_if_end_game(){
         if(GameState.current_player == player1 && player2.number_of_armies == 0) {
                 return true;
@@ -121,4 +106,11 @@ public class GameManager {
         else
             GameState.current_player = player1;
     }
+
+    private void click_btn_end_turn(){
+        if(check_if_end_game())
+            return;
+        change_player();
+    }
+
 }
