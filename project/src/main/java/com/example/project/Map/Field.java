@@ -56,6 +56,7 @@ public class Field {
                     if(GameState.selected_field.get_army().get_rank() == army.get_rank()){
                         army.decrease_health(GameState.selected_field.get_army().get_strength());
                         if(army.get_health() <= 0){
+                            army.player.number_of_armies--;
                             set_army(null, null);
                         }
                     }
@@ -63,14 +64,17 @@ public class Field {
                         army.decrease_health(GameState.selected_field.get_army().get_strength() / 2);
                         GameState.selected_field.get_army().decrease_health(army.get_strength() / 2);
                         if(army.get_health() <= 0){
+                            army.player.number_of_armies--;
                             set_army(null, null);
                         }
                         if(GameState.selected_field.get_army().get_health() <= 0){
+                            GameState.selected_field.get_army().player.number_of_armies--;
                             GameState.selected_field.set_army(null, null);
                         }
                     } else{ // >
                         army.decrease_health((int) (GameState.selected_field.get_army().get_strength()*1.5));
                         if(army.get_health() <= 0){
+                            army.player.number_of_armies--;
                             set_army(null, null);
                         }
                     }
@@ -135,7 +139,7 @@ public class Field {
     }
 
 
-    private void applyOverlay(ImageView imageView, Button btn, Color color, double opacity) {
+   /* private void applyOverlay(ImageView imageView, Button btn, Color color, double opacity) {
         if (imageView == null) return;
 
         ColorAdjust colorAdjust = new ColorAdjust();
@@ -150,7 +154,7 @@ public class Field {
         );
         imageView.setEffect(blend);
     }
-
+*/
     public void set_color(String color){
         button.setStyle("-fx-background-color: " + color + "; -fx-padding: 0; -fx-border-color: transparent;");
     }
