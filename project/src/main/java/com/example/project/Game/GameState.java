@@ -14,6 +14,6 @@ public class GameState {
 
     public static Board board = null;
 
-    public static List<Field> possible_move_fields = new ArrayList<Field>();
+    public static List<Field> possible_move_fields = new ArrayList<>();
     public static List<Field> possible_attack_fields = new ArrayList<>();
 }

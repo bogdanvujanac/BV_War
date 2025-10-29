@@ -44,41 +44,11 @@ public class Field {
         }
         else{
             if(army == null) {
-                // MOVE
-                if(GameState.possible_move_fields.contains(this)) {
-                    this.set_army(GameState.selected_field.get_army(), GameState.current_player);
-                    GameState.selected_field.set_army(null, null);
-                }
+                GameHelper.move(GameState.selected_field, this, GameState.possible_move_fields);
             }
             else if(army.player != GameState.current_player) {
                 // ATTACK
-                if(GameState.possible_attack_fields.contains(this)){
-                    if(GameState.selected_field.get_army().get_rank() == army.get_rank()){
-                        army.decrease_health(GameState.selected_field.get_army().get_strength());
-                        if(army.get_health() <= 0){
-                            army.player.number_of_armies--;
-                            set_army(null, null);
-                        }
-                    }
-                    else if(GameState.selected_field.get_army().get_rank() < army.get_rank()){
-                        army.decrease_health(GameState.selected_field.get_army().get_strength() / 2);
-                        GameState.selected_field.get_army().decrease_health(army.get_strength() / 2);
-                        if(army.get_health() <= 0){
-                            army.player.number_of_armies--;
-                            set_army(null, null);
-                        }
-                        if(GameState.selected_field.get_army().get_health() <= 0){
-                            GameState.selected_field.get_army().player.number_of_armies--;
-                            GameState.selected_field.set_army(null, null);
-                        }
-                    } else{ // >
-                        army.decrease_health((int) (GameState.selected_field.get_army().get_strength()*1.5));
-                        if(army.get_health() <= 0){
-                            army.player.number_of_armies--;
-                            set_army(null, null);
-                        }
-                    }
-                }
+                GameHelper.attack(GameState.selected_field, this, GameState.possible_attack_fields);
             }
             else {
                 // nista
