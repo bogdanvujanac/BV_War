@@ -6,12 +6,8 @@ import com.example.project.Game.GameHelper;
 import com.example.project.Game.GameState;
 import com.example.project.Game.Player;
 import javafx.scene.control.Button;
-import javafx.scene.effect.Blend;
-import javafx.scene.effect.BlendMode;
-import javafx.scene.effect.ColorAdjust;
-import javafx.scene.effect.ColorInput;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 
 import java.util.HashSet;
 import java.util.List;
@@ -53,6 +49,9 @@ public class Field {
             else {
                 // nista
             }
+
+            this.set_health_text();
+            GameState.selected_field.set_health_text();
 
             GameState.first_click = true;
             GameState.selected_field = null;
@@ -105,7 +104,18 @@ public class Field {
             image_view.setPreserveRatio(true);
 
             button.setGraphic(image_view);
+
+            button.setContentDisplay(ContentDisplay.TOP);
+            set_health_text();
         }
+    }
+
+    public void set_health_text(){
+        if(army != null){
+            button.setText(army.get_health() + "/" + army.get_max_health());
+        }
+        else
+            button.setText("");
     }
 
 
