@@ -13,7 +13,7 @@ import javafx.scene.effect.ColorInput;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
+import java.util.HashSet;
 import java.util.List;
 
 public class Field {
@@ -59,7 +59,7 @@ public class Field {
 
 
             Field.set_fields_style(GameState.possible_move_fields.stream().filter(f -> f != this).toList(), "");
-            Field.set_fields_style(GameState.possible_attack_fields.stream().filter(f -> f != this).toList(), "");
+            Field.set_fields_style(GameState.possible_attack_fields.stream().toList(), "");
 
             GameState.possible_move_fields.clear();
             GameState.possible_attack_fields.clear();
@@ -129,7 +129,7 @@ public class Field {
         button.setStyle("-fx-background-color: " + color + "; -fx-padding: 0; -fx-border-color: transparent;");
     }
 
-    public static void paint_fields(List<Field> fields, String color){
+    public static void paint_fields(HashSet<Field> fields, String color){
         for(Field f : fields){
             f.set_color(color);
         }

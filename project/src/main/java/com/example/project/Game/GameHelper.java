@@ -3,7 +3,7 @@ package com.example.project.Game;
 import com.example.project.Army.TheArmy;
 import com.example.project.Map.Field;
 
-import java.util.List;
+import java.util.HashSet;
 
 public class GameHelper {
 
@@ -23,14 +23,14 @@ public class GameHelper {
 
     }
 
-    public static void move(Field from_field, Field to_field, List<Field> possible_move_fields){
+    public static void move(Field from_field, Field to_field, HashSet<Field> possible_move_fields){
         if(possible_move_fields.contains(to_field)) {
             to_field.set_army(from_field.get_army(), GameState.current_player);
             from_field.set_army(null, null);
         }
     }
 
-    public static void attack(Field attacking_field, Field defense_field, List<Field> possible_attack_fields){
+    public static void attack(Field attacking_field, Field defense_field, HashSet<Field> possible_attack_fields){
 
         TheArmy defense_army = defense_field.get_army();
         TheArmy attacking_army = attacking_field.get_army();
