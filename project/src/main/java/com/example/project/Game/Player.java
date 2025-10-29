@@ -3,6 +3,8 @@ package com.example.project.Game;
 public class Player {
     private String username;
 
+    public String color;
+
     public Player(String username, String color) {
         this.username = username;
         this.color = color;
@@ -14,6 +16,6 @@ public class Player {
         return username;
     }
 
-    public String color;
+
 
 }

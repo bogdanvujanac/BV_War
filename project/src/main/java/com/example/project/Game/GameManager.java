@@ -6,6 +6,7 @@ import com.example.project.Army.Infantry;
 import com.example.project.Army.Tank;
 import com.example.project.Constants;
 import com.example.project.Map.Board;
+import com.example.project.PopUpMessage;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,6 +22,8 @@ public class GameManager {
     private Player player1;
     private Player player2;
 
+    private Stage stage;
+
     //private Board board;
 
     public GameManager(int grid_size, String username1, String username2){
@@ -31,6 +34,7 @@ public class GameManager {
     }
 
     public void Show(Stage stage) throws IOException {
+        this.stage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/project/game_scene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 
@@ -105,11 +109,14 @@ public class GameManager {
             GameState.current_player = player2;
         else
             GameState.current_player = player1;
+
+        PopUpMessage.pop_up_current_player(stage, GameState.current_player.get_username(), GameState.current_player.color);
     }
 
     private void click_btn_end_turn(){
-        if(check_if_end_game())
-            return;
+        if(check_if_end_game()){
+            PopUpMessage.pop_up_end_game(stage, Constants.end_game, GameState.current_player.get_username());
+        }
         change_player();
     }
 

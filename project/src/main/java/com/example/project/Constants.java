@@ -64,4 +64,8 @@ public final class Constants {
     public static final String player2_color = "#EEE8AA";
     public static final String attack_color = "#F08080";
     public static final String move_color = "#87CEEB";
+
+    public static final String error_blank_usernames = "Please fill out all the fields";
+    public static final String error_equal_usernames = "Usernames can't be the same";
+    public static final String end_game = "Winner is player ";
 }

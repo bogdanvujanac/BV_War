@@ -1,10 +1,11 @@
 package com.example.project.Usernames;
 
+import com.example.project.Constants;
 import com.example.project.Game.GameManager;
+import com.example.project.PopUpMessage;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -47,10 +48,10 @@ public class UsernamesManager {
             alert.setContentText("Please fill out all the fields");
             alert.showAndWait();*/
 
-            WarningMessage.WarningIsBlank(stage);
+            PopUpMessage.pop_up(stage, Constants.error_blank_usernames);
         }
         else if(controller.get_username1().equalsIgnoreCase(controller.get_username2())){
-            WarningMessage.WarningIsEqual(stage);
+            PopUpMessage.pop_up(stage, Constants.error_equal_usernames);
         }
         else {
             GameManager gameManager = new GameManager(controller.size_for_grid(), controller.get_username1(), controller.get_username2());
