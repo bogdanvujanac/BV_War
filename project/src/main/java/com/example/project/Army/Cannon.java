@@ -11,9 +11,19 @@ import java.util.List;
 
 public class Cannon extends TheArmy{
     public Cannon() {
-        super(Constants.cannon_max_health, Constants.cannon_max_health, Constants.cannon_strength_of_attack, "/com/example/project/images/cannon.png");//, new Image("/com/example/project/images/cannon.png"));
+        super(Constants.cannon_max_health, "/com/example/project/images/cannon.png");//, new Image("/com/example/project/images/cannon.png"));
 
         //image = new Image(getClass().getResource("/com/example/project/images/cannon.png").toExternalForm());
+    }
+
+    @Override
+    public int get_max_health() {
+        return Constants.cannon_max_health;
+    }
+
+    @Override
+    public int get_strength_of_attack() {
+        return Constants.cannon_strength_of_attack;
     }
 
     public int get_rank(){

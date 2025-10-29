@@ -13,13 +13,23 @@ public class Tank extends TheArmy{
 
 
     public Tank() {
-        super(Constants.tank_max_health, Constants.tank_max_health, Constants.tank_strength_of_attack, "/com/example/project/images/tank1.png");//, new Image("com/example/project/images/tank.png"));
+        super(Constants.tank_max_health, "/com/example/project/images/tank1.png");//, new Image("com/example/project/images/tank.png"));
 
         //image = new Image(getClass().getResource("/com/example/project/images/tank.png").toExternalForm());
     }
 
     public int get_rank(){
         return Constants.tank_rank;
+    }
+
+    @Override
+    public int get_max_health() {
+        return Constants.tank_max_health;
+    }
+
+    @Override
+    public int get_strength_of_attack() {
+        return Constants.tank_strength_of_attack;
     }
 
     @Override

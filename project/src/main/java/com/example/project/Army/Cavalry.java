@@ -11,9 +11,19 @@ import java.util.List;
 
 public class Cavalry extends TheArmy {
     public Cavalry() {
-        super(Constants.cavalry_max_health, Constants.cavalry_max_health, Constants.cavalry_strength_of_attack, "/com/example/project/images/cavalry.png");//, new Image("com/example/project/images/calavry2.png"));
+        super(Constants.cavalry_max_health,"/com/example/project/images/cavalry.png");//, new Image("com/example/project/images/calavry2.png"));
 
         //image = new Image(getClass().getResource("/com/example/project/images/cavalry.png").toExternalForm());
+    }
+
+    @Override
+    public int get_max_health() {
+        return Constants.cavalry_max_health;
+    }
+
+    @Override
+    public int get_strength_of_attack() {
+        return Constants.cavalry_strength_of_attack;
     }
 
     public int get_rank(){

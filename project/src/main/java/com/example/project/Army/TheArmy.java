@@ -11,9 +11,7 @@ import java.util.List;
 
 public abstract class TheArmy {
 
-    protected int max_health; // TODO: think about removing this
     protected int health;
-    protected int strength_of_attack;
 
     protected Image image;
 
@@ -23,11 +21,11 @@ public abstract class TheArmy {
     public abstract List<Field> available_attacks(Board board, Field field);
 
     public abstract int get_rank();
+    public abstract int get_max_health();
+    public abstract int get_strength_of_attack();
 
-    protected TheArmy(int max_health, int health, int strength_of_attack, String image_path){//}, Image image) {
-        this.max_health = max_health;
+    protected TheArmy(int health, String image_path){//}, Image image) {
         this.health = health;
-        this.strength_of_attack = strength_of_attack;
 
         this.image = new Image(getClass().getResourceAsStream(image_path));
     }
@@ -103,10 +101,6 @@ public abstract class TheArmy {
 
     public void decrease_health(int strength){
         health -= strength;
-    }
-
-    public int get_strength(){
-        return strength_of_attack;
     }
 
     public int get_health(){
