@@ -70,6 +70,8 @@ public class GameManager implements IManager {
         choose_first_player();
         // 2.
         put_army_on_map();
+        // 3. show first player
+        PopUpMessage.pop_up_current_player(stage, GameState.current_player.get_username(), GameState.current_player.color);
     }
 
     private void choose_first_player(){
