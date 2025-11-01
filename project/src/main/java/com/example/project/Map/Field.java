@@ -31,7 +31,6 @@ public class Field {
     }
 
     void on_field_button_click(){
-        // TODO: refactor
         if(GameState.first_click){
             GameHelper.save_first_click(this);
 
@@ -58,7 +57,14 @@ public class Field {
 
 
             Field.set_fields_style(GameState.possible_move_fields.stream().filter(f -> f != this).toList(), "");
-            Field.set_fields_style(GameState.possible_attack_fields.stream().toList(), "");
+
+            for(Field f : GameState.possible_attack_fields){
+                if(f.army != null){
+                    f.set_color(f.army.player.color);
+                }
+                else
+                    f.button.setStyle("");
+            }
 
             GameState.possible_move_fields.clear();
             GameState.possible_attack_fields.clear();
