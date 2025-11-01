@@ -3,6 +3,8 @@ package com.example.project.Usernames;
 import com.example.project.Constants;
 import com.example.project.Game.GameManager;
 import com.example.project.PopUpMessage;
+import com.example.project.Util.IController;
+import com.example.project.Util.IManager;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,10 +12,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class UsernamesManager {
+public class UsernamesManager implements IManager {
 
     public UsernamesController controller;
 
+    @Override
     public void Show(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/project/enter_usernames_scene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
@@ -39,6 +42,11 @@ public class UsernamesManager {
         Platform.runLater(() -> stage.setFullScreen(true));
     }
 
+    @Override
+    public IController get_controller(){
+        return controller;
+    }
+
     private void on_btn_play_click(Stage stage) throws IOException {
 
         if(controller.get_username1().isBlank() || controller.get_username2().isBlank()){
@@ -58,4 +66,5 @@ public class UsernamesManager {
             gameManager.Show(stage);
         }
     }
+
 }

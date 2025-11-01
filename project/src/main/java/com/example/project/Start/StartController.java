@@ -1,11 +1,12 @@
 package com.example.project.Start;
 
+import com.example.project.Util.IController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
-public class StartController {
+public class StartController implements IController {
 
     @FXML
     private AnchorPane pane_start;
@@ -16,7 +17,7 @@ public class StartController {
     @FXML
     private Button btn_exit;
 
-    @FXML
+    @Override
     public void initialize(){
         Image img = new Image(getClass().getResource("/com/example/project/images/background1.jpg").toExternalForm());
         BackgroundImage bgimg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false,false,true,true));

@@ -7,6 +7,8 @@ import com.example.project.Army.Tank;
 import com.example.project.Constants;
 import com.example.project.Map.Board;
 import com.example.project.PopUpMessage;
+import com.example.project.Util.IController;
+import com.example.project.Util.IManager;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,7 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Random;
 
-public class GameManager {
+public class GameManager implements IManager {
     private final int grid_size;
     public GameController controller;
 
@@ -33,6 +35,12 @@ public class GameManager {
         player2 = new Player(username2, Constants.player2_color);
     }
 
+    @Override
+    public IController get_controller(){
+        return controller;
+    }
+
+    @Override
     public void Show(Stage stage) throws IOException {
         this.stage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/project/game_scene.fxml"));
@@ -59,12 +67,12 @@ public class GameManager {
 
     private void start_game(){
         // 1.
-        choose_current_player();
+        choose_first_player();
         // 2.
         put_army_on_map();
     }
 
-    private void choose_current_player(){
+    private void choose_first_player(){
         int on_turn = new Random().nextInt(2) + 1;
         if(on_turn == 1)
             GameState.current_player = player1;

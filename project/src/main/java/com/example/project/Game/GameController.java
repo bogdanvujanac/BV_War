@@ -1,6 +1,7 @@
 package com.example.project.Game;
 
 import com.example.project.Constants;
+import com.example.project.Util.IController;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -8,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
-public class GameController {
+public class GameController implements IController {
 
     @FXML
     private AnchorPane anchor_pane;
@@ -24,7 +25,7 @@ public class GameController {
     @FXML
     private Button btn_end;
 
-    @FXML
+    @Override
     public void initialize(){
         Image img = new Image(getClass().getResource("/com/example/project/images/military1.jpg").toExternalForm());
         BackgroundImage bgimg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false,false,true,true));

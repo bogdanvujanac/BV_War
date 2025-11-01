@@ -1,5 +1,6 @@
 package com.example.project.Usernames;
 
+import com.example.project.Util.IController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -7,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.image.Image;
 
-public class UsernamesController {
+public class UsernamesController implements IController {
 
     @FXML
     private AnchorPane anchor_pane;
@@ -24,7 +25,7 @@ public class UsernamesController {
     @FXML
     ChoiceBox<String> cb_field;
 
-    @FXML
+    @Override
     public void initialize(){
         cb_field.getItems().addAll("6x6","7x7","8x8", "9x9","10x10");
         cb_field.setValue("6x6");
