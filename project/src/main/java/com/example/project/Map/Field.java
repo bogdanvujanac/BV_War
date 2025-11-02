@@ -1,7 +1,7 @@
 package com.example.project.Map;
 
 import com.example.project.Army.TheArmy;
-import com.example.project.Constants;
+import com.example.project.Util.Constants;
 import com.example.project.Game.GameHelper;
 import com.example.project.Game.GameState;
 import com.example.project.Game.Player;

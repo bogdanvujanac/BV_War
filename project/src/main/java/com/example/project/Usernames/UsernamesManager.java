@@ -1,8 +1,8 @@
 package com.example.project.Usernames;
 
-import com.example.project.Constants;
+import com.example.project.Util.Constants;
 import com.example.project.Game.GameManager;
-import com.example.project.PopUpMessage;
+import com.example.project.Util.PopUpMessage;
 import com.example.project.Util.IController;
 import com.example.project.Util.IManager;
 import javafx.application.Platform;

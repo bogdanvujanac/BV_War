@@ -14,4 +14,6 @@ module com.example.project {
     opens com.example.project.Start to javafx.fxml;
     exports com.example.project.Usernames;
     opens com.example.project.Usernames to javafx.fxml;
+    exports com.example.project.Util;
+    opens com.example.project.Util to javafx.fxml;
 }

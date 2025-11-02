@@ -1,6 +1,6 @@
 package com.example.project.Game;
 
-import com.example.project.Constants;
+import com.example.project.Util.Constants;
 import com.example.project.Util.IController;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;

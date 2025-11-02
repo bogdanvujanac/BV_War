@@ -1,9 +1,8 @@
 package com.example.project.Army;
 
-import com.example.project.Constants;
+import com.example.project.Util.Constants;
 import com.example.project.Map.Board;
 import com.example.project.Map.Field;
-import javafx.scene.image.Image;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
