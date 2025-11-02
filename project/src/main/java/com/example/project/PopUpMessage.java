@@ -121,7 +121,7 @@ public class PopUpMessage {
 
         child.show();
 
-        javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(javafx.util.Duration.seconds(2));
+        javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(javafx.util.Duration.seconds(0.5));
         delay.setOnFinished(e -> {
             javafx.animation.FadeTransition fade = new javafx.animation.FadeTransition(javafx.util.Duration.seconds(0.5), layout);
             fade.setFromValue(1);

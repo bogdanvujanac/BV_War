@@ -6,12 +6,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Program extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        //GameManager gameMgr = new GameManager(5);
-        //gameMgr.Show(stage);
-
         StartManager startMgr = new StartManager();
         startMgr.Show(stage);
     }

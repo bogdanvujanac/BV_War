@@ -105,7 +105,7 @@ public class Field {
             button.setGraphic(null);
         else {
             ImageView image_view = new ImageView(army.get_image());
-            image_view.fitWidthProperty().bind(button.widthProperty().multiply(0.8));
+            image_view.fitWidthProperty().bind(button.widthProperty().multiply(0.7));
             image_view.fitHeightProperty().bind(button.heightProperty());
             image_view.setPreserveRatio(true);
 
